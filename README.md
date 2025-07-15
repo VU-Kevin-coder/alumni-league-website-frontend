@@ -6,7 +6,7 @@ This is a responsive Bootstrap-based frontend for a demo Alumni Football League 
 
 ## 🌐 Live Demo
 
-[🔗 View Demo](https://your-demo-url.com) 
+[🔗 View Demo](https://vu-kevin-coder.github.io/alumni-league-website-frontend/index) 
 
 ---
 
