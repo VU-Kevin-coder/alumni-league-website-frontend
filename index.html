@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BubzLeague - Alumni Football League</title>
+    <!-- Icon -->
+     <link rel="shortcut icon" href="assets/images/bubzleague.png" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Linking Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">    
+</head>
+<body>
+      <nav>
+    <div class="navbar">
+      <i class='bx bx-menu'></i>
+      <div class="logo">
+        <a class="navbar-brand" href="index">
+          <img src="assets/images/bubzleague.png" alt="BubzLeague" height="40">
+          <span class="logo-name">BubzLeague</span>
+        </a>
+      </div>
+      <div class="nav-links">
+        <div class="sidebar-logo">
+          <span class="logo-name">BubzLeague</span>
+          <i class='bx bx-x' ></i>
+        </div>
+        <ul class="links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about-us.html">About</a></li>
+          <li>
+            <a href="#">League</a>
+            <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
+            <ul class="htmlCss-sub-menu sub-menu">
+              <li><a href="fixtures.html">Fixtures</a></li>
+              <li><a href="results.html">Results</a></li>
+              <li><a href="teams.html">Teams</a></li>
+              <li><a href="players.html">Players</a></li>
+            </ul>
+          </li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="media.html">Media</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </div>
+      <div class="search-box">
+        <i class='bx bx-search'></i>
+        <div class="input-box">
+          <input type="text" placeholder="Search...">
+        </div>
+      </div>
+    </div>
+  </nav>
+<style>
+        /* Hero Slider Styles */
+    .hero-slider {
+        position: relative;
+        height: 80vh;
+        min-height: 600px;
+        overflow: hidden;
+    }
+    
+    .hero-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        display: flex;
+        align-items: center;
+    }
+    
+    .hero-slide.active {
+        opacity: 1;
+        z-index: 1;
+    }
+    
+    .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    
+    .gradient-overlay {
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.91) 0%, rgba(0, 0, 0, 0.81) 100%);
+    }
+    
+    /* Navigation Arrows */
+    .slider-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 50px;
+        background-color: rgba(255, 255, 255, 0.2);
+        border: none;
+        border-radius: 50%;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 10;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .slider-arrow:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    .slider-prev {
+        left: 30px;
+    }
+    
+    .slider-next {
+        right: 30px;
+    }
+    
+    /* Slider Dots */
+    .slider-dots {
+        position: absolute;
+        bottom: 30px;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .slider-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+    }
+    
+    .slider-dot.active {
+        background-color: #fff;
+        transform: scale(1.3);
+    }
+    
+    /* Countdown Styles */
+    .countdown-container {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin: 1.5rem 0;
+    }
+    
+    .countdown-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 70px;
+    }
+    
+    .countdown-value {
+        font-size: 2.5rem;
+        font-weight: 700;
+        line-height: 1;
+        color: #fff;
+        text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+    
+    .countdown-label {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 5px;
+        color: rgba(255,255,255,0.8);
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 992px) {
+        .hero-slider {
+            height: 70vh;
+        }
+        
+        .countdown-box {
+            min-width: 60px;
+        }
+        
+        .countdown-value {
+            font-size: 2rem;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .hero-slider {
+            height: 60vh;
+            min-height: 500px;
+        }
+        
+        .hero-slide h1 {
+            font-size: 2.5rem;
+        }
+        
+        .countdown-container {
+            gap: 10px;
+        }
+        
+        .countdown-box {
+            min-width: 50px;
+        }
+        
+        .countdown-value {
+            font-size: 1.8rem;
+        }
+        
+        .slider-arrow {
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .hero-slider {
+            height: 50vh;
+            min-height: 400px;
+        }
+        
+        .hero-slide h1 {
+            font-size: 2rem;
+        }
+        
+        .countdown-container {
+            gap: 5px;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .countdown-box {
+            min-width: 45px;
+            margin: 0 5px;
+        }
+        
+        .countdown-value {
+            font-size: 1.5rem;
+        }
+        
+        .countdown-label {
+            font-size: 0.7rem;
+        }
+        
+        .slider-arrow {
+            width: 35px;
+            height: 35px;
+        }
+        
+        .slider-prev {
+            left: 15px;
+        }
+        
+        .slider-next {
+            right: 15px;
+        }
+    }
+</style>
+<!-- Hero Slider Section -->
+<div class="hero-slider">
+    <!-- Slide 1 -->
+    <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80')">
+        <div class="hero-overlay gradient-overlay"></div>
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12 text-center text-white">
+                    <h1 class="display-3 animate__animated animate__fadeInDown">BubzLeague</h1>
+                    <p class="lead animate__animated animate__fadeInUp animate__delay-1s">Alumni Football League</p>
+                    <a href="fixtures.php" class="btn btn-primary btn-lg mt-3 animate__animated animate__fadeInUp animate__delay-2s">View Fixtures</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Slide 2 -->
+    <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80')">
+        <div class="hero-overlay gradient-overlay"></div>
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12 text-center text-white">
+                    <h1 class="display-3 animate__animated animate__fadeInDown">2023 Season</h1>
+                    <p class="lead animate__animated animate__fadeInUp animate__delay-1s">Exciting matches every weekend</p>
+                    <a href="teams.php" class="btn btn-primary btn-lg mt-3 animate__animated animate__fadeInUp animate__delay-2s">View Teams</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Slide 3 (With Countdown) -->
+    <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80')">
+        <div class="hero-overlay gradient-overlay"></div>
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12 text-center text-white">
+                    <h1 class="display-3 animate__animated animate__fadeInDown">Next Match</h1>
+                    <div class="countdown-container animate__animated animate__fadeInUp animate__delay-1s">
+                        <div class="countdown-box">
+                            <span id="days" class="countdown-value">00</span>
+                            <span class="countdown-label">Days</span>
+                        </div>
+                        <div class="countdown-box">
+                            <span id="hours" class="countdown-value">00</span>
+                            <span class="countdown-label">Hours</span>
+                        </div>
+                        <div class="countdown-box">
+                            <span id="minutes" class="countdown-value">00</span>
+                            <span class="countdown-label">Minutes</span>
+                        </div>
+                        <div class="countdown-box">
+                            <span id="seconds" class="countdown-value">00</span>
+                            <span class="countdown-label">Seconds</span>
+                        </div>
+                    </div>
+                    <p class="lead mt-3 animate__animated animate__fadeInUp animate__delay-1s">Stanley FC vs United FC</p>
+                    <a href="fixtures.php" class="btn btn-primary btn-lg mt-3 animate__animated animate__fadeInUp animate__delay-2s">Match Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navigation Arrows -->
+    <button class="slider-arrow slider-prev" aria-label="Previous slide">
+        <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="slider-arrow slider-next" aria-label="Next slide">
+        <i class="fas fa-chevron-right"></i>
+    </button>
+    <!-- Slider Dots -->
+    <div class="slider-dots"></div>
+</div>
+    <!-- Featured Matches -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 animate__animated animate__fadeIn">Featured Matches</h2>
+            <div class="row g-4">
+                <div class="col-md-4 match-cont">
+                    <div class="card match-card h-100 animate__animated animate__fadeInUp">
+                        <div class="card-body text-center">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="team">
+                                    <img src="https://i.pinimg.com/736x/8e/f5/9d/8ef59dc3c90a3abd56c87a5901709132.jpg" alt="Team A" class="img-fluid rounded-circle">
+                                    <h5 class="mt-2">Stanley FC</h5>
+                                </div>
+                                <div class="score">
+                                    <span class="badge bg-primary fs-5">2 - 1</span>
+                                    <div class="text-muted small">FT</div>
+                                </div>
+                                <div class="team">
+                                    <img src="https://i.pinimg.com/736x/32/0c/ac/320cace72205d4b671ec6b8c01b3a69c.jpg" alt="Team B" class="img-fluid rounded-circle">
+                                    <h5 class="mt-2">Rangers FC</h5>
+                                </div>
+                            </div>
+                            <div class="match-info">
+                                <p class="text-muted"><i class="fas fa-calendar-alt me-2"></i>Sat, 15 Jul 2023</p>
+                                <p class="text-muted"><i class="fas fa-map-marker-alt me-2"></i>Alumni Stadium</p>
+                            </div>
+                            <a href="#" class="btn btn-sm btn-outline-primary">Match Report</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 match-cont">
+                    <div class="card match-card h-100 animate__animated animate__fadeInUp animate__delay-1s">
+                        <div class="card-body text-center">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="team">
+                                    <img src="https://i.pinimg.com/736x/e8/f0/88/e8f088324626761c201821646b10eac1.jpg" alt="Team A" class="img-fluid rounded-circle">
+                                    <h5 class="mt-2">Dragons FC</h5>
+                                </div>
+                                <div class="score">
+                                    <span class="badge bg-secondary fs-5">- : -</span>
+                                    <div class="text-muted small">Upcoming</div>
+                                </div>
+                                <div class="team">
+                                    <img src="https://i.pinimg.com/736x/cf/23/f0/cf23f0af7d7cbe1e1c0f899f26cde5c2.jpg" alt="Team B" class="img-fluid rounded-circle">
+                                    <h5 class="mt-2">United FC</h5>
+                                </div>
+                            </div>
+                            <div class="match-info">
+                                <p class="text-muted"><i class="fas fa-calendar-alt me-2"></i>Sat, 22 Jul 2023</p>
+                                <p class="text-muted"><i class="fas fa-map-marker-alt me-2"></i>Alumni Stadium</p>
+                            </div>
+                            <a href="#" class="btn btn-sm btn-outline-primary">Preview</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 match-cont">
+                    <div class="card match-card h-100 animate__animated animate__fadeInUp animate__delay-2s">
+                        <div class="card-body text-center">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="team">
+                                    <img src="https://i.pinimg.com/736x/91/08/9e/91089e90e81f7ce51b4bad2e7311252d.jpg" alt="Team A" class="img-fluid rounded-circle">
+                                    <h5 class="mt-2">Wolves FC</h5>
+                                </div>
+                                <div class="score">
+                                    <span class="badge bg-danger fs-5">1 - 1</span>
+                                    <div class="text-muted small">Live 75'</div>
+                                </div>
+                                <div class="team">
+                                    <img src="https://i.pinimg.com/736x/8e/e5/ca/8ee5ca47a03817c5fd259ffe95095291.jpg" alt="Team B" class="img-fluid rounded-circle">
+                                    <h5 class="mt-2">Lions FC</h5>
+                                </div>
+                            </div>
+                            <div class="match-info">
+                                <p class="text-muted"><i class="fas fa-calendar-alt me-2"></i>Sat, 8 Jul 2023</p>
+                                <p class="text-muted"><i class="fas fa-map-marker-alt me-2"></i>Alumni Stadium</p>
+                            </div>
+                            <a href="#" class="btn btn-sm btn-outline-danger">Follow Live</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- League Standings -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 animate__animated animate__fadeIn">League Standings</h2>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover animate__animated animate__fadeIn">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Team</th>
+                            <th>P</th>
+                            <th>W</th>
+                            <th>D</th>
+                            <th>L</th>
+                            <th>GF</th>
+                            <th>GA</th>
+                            <th>GD</th>
+                            <th>Pts</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><strong>Stanley FC</strong></td>
+                            <td>5</td>
+                            <td>4</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>12</td>
+                            <td>3</td>
+                            <td>+9</td>
+                            <td><strong>13</strong></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Dragons FC</td>
+                            <td>5</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>10</td>
+                            <td>4</td>
+                            <td>+6</td>
+                            <td>11</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>United FC</td>
+                            <td>5</td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>8</td>
+                            <td>5</td>
+                            <td>+3</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Lions FC</td>
+                            <td>5</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>7</td>
+                            <td>6</td>
+                            <td>+1</td>
+                            <td>8</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Rangers FC</td>
+                            <td>5</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>-1</td>
+                            <td>7</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Wolves FC</td>
+                            <td>5</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>4</td>
+                            <td>3</td>
+                            <td>11</td>
+                            <td>-8</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Tigers FC</td>
+                            <td>5</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>5</td>
+                            <td>2</td>
+                            <td>12</td>
+                            <td>-10</td>
+                            <td>0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center mt-4">
+                <a href="teams.php" class="btn btn-primary">View All Teams</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Players -->
+    <section class="py-5">
+
+    <div class="container swiper">
+      <div class="wrapper">
+        <div class="card-list swiper-wrapper">
+          <!-- Single Card -->
+          <div class="card-player swiper-slide">
+            <div class="card-image">
+              <img src="https://i.pinimg.com/736x/be/4d/4f/be4d4facc94ed8c48fa29414791794f7.jpg" alt="Design Trends" />
+              <div class="card-tag">7</div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Christiano Ronaldo</h3>
+              <p class="card-text">eumorphism to glassmorphism and beyond.</p>
+              <div class="card-footer">
+                <div class="card-profile">
+                            <div class="player-stats">
+                                <span class="badge bg-success">8 Goals</span>
+                                <span class="badge bg-primary">5 Assists</span>
+                            </div>                    
+                </div>
+                <a href="#" class="card-button">Visit</a>
+              </div>
+            </div>
+          </div>
+          <!-- Single Card -->
+         <div class="card-player swiper-slide">
+            <div class="card-image">
+              <img src="https://i.pinimg.com/736x/be/4d/4f/be4d4facc94ed8c48fa29414791794f7.jpg" alt="Design Trends" />
+              <div class="card-tag">7</div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Christiano Ronaldo</h3>
+              <p class="card-text">eumorphism to glassmorphism and beyond.</p>
+              <div class="card-footer">
+                <div class="card-profile">
+                            <div class="player-stats">
+                                <span class="badge bg-success">8 Goals</span>
+                                <span class="badge bg-primary">5 Assists</span>
+                            </div>                    
+                </div>
+                <a href="#" class="card-button">Visit</a>
+              </div>
+            </div>
+          </div>
+          <!-- Single Card -->
+          <div class="card-player swiper-slide">
+            <div class="card-image">
+              <img src="https://i.pinimg.com/736x/be/4d/4f/be4d4facc94ed8c48fa29414791794f7.jpg" alt="Design Trends" />
+              <div class="card-tag">7</div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Christiano Ronaldo</h3>
+              <p class="card-text">eumorphism to glassmorphism and beyond.</p>
+              <div class="card-footer">
+                <div class="card-profile">
+                            <div class="player-stats">
+                                <span class="badge bg-success">8 Goals</span>
+                                <span class="badge bg-primary">5 Assists</span>
+                            </div>                    
+                </div>
+                <a href="#" class="card-button">Visit</a>
+              </div>
+            </div>
+          </div>
+          <!-- Single Card -->
+          <div class="card-player swiper-slide">
+            <div class="card-image">
+              <img src="https://i.pinimg.com/736x/be/4d/4f/be4d4facc94ed8c48fa29414791794f7.jpg" alt="Design Trends" />
+              <div class="card-tag">7</div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Christiano Ronaldo</h3>
+              <p class="card-text">eumorphism to glassmorphism and beyond.</p>
+              <div class="card-footer">
+                <div class="card-profile">
+                            <div class="player-stats">
+                                <span class="badge bg-success">8 Goals</span>
+                                <span class="badge bg-primary">5 Assists</span>
+                            </div>                    
+                </div>
+                <a href="#" class="card-button">Visit</a>
+              </div>
+            </div>
+          </div>
+          <!-- Single Card -->
+          <div class="card-player swiper-slide">
+            <div class="card-image">
+              <img src="https://i.pinimg.com/736x/be/4d/4f/be4d4facc94ed8c48fa29414791794f7.jpg" alt="Design Trends" />
+              <div class="card-tag">7</div>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Christiano Ronaldo</h3>
+              <p class="card-text">eumorphism to glassmorphism and beyond.</p>
+              <div class="card-footer">
+                <div class="card-profile">
+                            <div class="player-stats">
+                                <span class="badge bg-success">8 Goals</span>
+                                <span class="badge bg-primary">5 Assists</span>
+                            </div>                    
+                </div>
+                <a href="#" class="card-button">Visit</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+
+            <div class="text-center mt-4">
+                <a href="players.php" class="btn btn-primary">View All Players</a>
+            </div>
+        <!-- Navigation Buttons -->
+        <div class="swiper-slide-button swiper-button-prev"></div>
+        <div class="swiper-slide-button swiper-button-next"></div>
+      </div>
+    </div>        
+    </section>
+
+    <!-- Latest News -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 animate__animated animate__fadeIn">Latest News</h2>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 blog-cont">
+                    <div class="card blog-card h-100 animate__animated animate__fadeInUp">
+                        <img src="https://i.pinimg.com/736x/8d/e9/1b/8de91bc7c69e69d068f9195bad913c9b.jpg" class="card-img-top" alt="Blog Post">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="badge bg-primary">Match Report</span>
+                                <small class="text-muted">2 days ago</small>
+                            </div>
+                            <h5 class="card-title">Stanley FC Extends Lead at the Top</h5>
+                            <p class="card-text">Stanley FC secured a crucial 2-1 victory against Rangers FC to extend their lead at the top of the BubzLeague table.</p>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <a href="blog/stanley-extends-lead.html" class="btn btn-sm btn-outline-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 blog-cont">
+                    <div class="card blog-card h-100 animate__animated animate__fadeInUp animate__delay-1s">
+                        <img src="https://i.pinimg.com/736x/0a/25/ae/0a25ae345db2fdb16f3c58c59c025a0f.jpg" class="card-img-top" alt="Blog Post">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="badge bg-success">Player Focus</span>
+                                <small class="text-muted">5 days ago</small>
+                            </div>
+                            <h5 class="card-title">John Doe: The Goal Machine</h5>
+                            <p class="card-text">With 8 goals in 5 matches, John Doe is proving to be the most lethal striker in the league this season.</p>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <a href="blog/john-doe-goal-machine.html" class="btn btn-sm btn-outline-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 blog-cont">
+                    <div class="card blog-card h-100 animate__animated animate__fadeInUp animate__delay-2s">
+                        <img src="https://i.pinimg.com/736x/5f/81/6b/5f816b7bd0920f61cdf92756e7b59bd5.jpg" class="card-img-top" alt="Blog Post">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="badge bg-warning text-dark">Announcement</span>
+                                <small class="text-muted">1 week ago</small>
+                            </div>
+                            <h5 class="card-title">League Expansion Plans for Next Season</h5>
+                            <p class="card-text">The BubzLeague committee has announced plans to expand the league to 10 teams for the next season.</p>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <a href="blog/league-expansion.html" class="btn btn-sm btn-outline-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="blog.php" class="btn btn-primary">View All News</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h3 class="mb-3">Subscribe to Our Newsletter</h3>
+                    <p class="mb-0">Stay updated with the latest news, match updates, and exclusive content from BubzLeague.</p>
+                </div>
+                <div class="col-lg-6">
+                    <form class="row g-2">
+                        <div class="col-8">
+                            <input type="email" class="form-control" placeholder="Your Email Address">
+                        </div>
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-dark w-100">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <img src="assets/images/bubzleague.png" alt="BubzLeague" height="40" class="mb-3">
+                    <p>The BubzLeague is an alumni football league bringing together former students in competitive but friendly matches.</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="mb-4">League</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="fixtures" class="text-white">Fixtures</a></li>
+                        <li class="mb-2"><a href="results" class="text-white">Results</a></li>
+                        <li class="mb-2"><a href="teams" class="text-white">Teams</a></li>
+                        <li class="mb-2"><a href="players" class="text-white">Players</a></li>
+                        <li><a href="vote.php" class="text-white">Vote</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="mb-4">About</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="about-us" class="text-white">About Us</a></li>
+                        <li class="mb-2"><a href="blog" class="text-white">Blog</a></li>
+                        <li class="mb-2"><a href="media" class="text-white">Media</a></li>
+                        <li><a href="contact" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h5 class="mb-4">Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-map-marker-alt me-2"></i> 123 Alumni Street, Football City</li>
+                        <li class="mb-3"><i class="fas fa-phone me-2"></i> (123) 456-7890</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@bubzleague.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; <?php echo date("Y");?> BubzLeague. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Designed with <i class="fas fa-heart text-danger"></i> by <a target="_blank" href="https:kevin.kesug.com">Kevin K</a> </p>
+                </div>
+            </div>
+        </div>
+    </footer>    
+    
+    <!-- Bootstrap JS -->
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/script.js"></script>
+
+    <script>
+        new Swiper(".wrapper", {
+  loop: true,
+  spaceBetween: 30,
+
+  // Autoplay
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: true,
+  },
+
+  // Pagination bullets
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+    dynamicBullets: true,
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+
+  // Responsive breakpoints
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
+    },
+    768: {
+      slidesPerView: 2,
+    },
+    1024: {
+      slidesPerView: 3,
+    },
+  },
+});
+
+    </script>
+</body>
+</html>

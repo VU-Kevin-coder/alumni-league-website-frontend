@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BubzLeague - Alumni Football League</title>
+    <!-- Icon -->
+     <link rel="shortcut icon" href="assets/images/bubzleague.png" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Linking Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">    
+</head>
+<body>
+      <nav>
+    <div class="navbar">
+      <i class='bx bx-menu'></i>
+      <div class="logo">
+        <a class="navbar-brand" href="index">
+          <img src="assets/images/bubzleague.png" alt="BubzLeague" height="40">
+          <span class="logo-name">BubzLeague</span>
+        </a>
+      </div>
+      <div class="nav-links">
+        <div class="sidebar-logo">
+          <span class="logo-name">BubzLeague</span>
+          <i class='bx bx-x' ></i>
+        </div>
+        <ul class="links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about-us.html">About</a></li>
+          <li>
+            <a href="#">League</a>
+            <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
+            <ul class="htmlCss-sub-menu sub-menu">
+              <li><a href="fixtures.html">Fixtures</a></li>
+              <li><a href="results.html">Results</a></li>
+              <li><a href="teams.html">Teams</a></li>
+              <li><a href="players.html">Players</a></li>
+            </ul>
+          </li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="media.html">Media</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </div>
+      <div class="search-box">
+        <i class='bx bx-search'></i>
+        <div class="input-box">
+          <input type="text" placeholder="Search...">
+        </div>
+      </div>
+    </div>
+  </nav>
+
+<style>
+    /* Match Report Styles */
+    .match-header {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                    url('../images/match-header-bg.jpg') no-repeat center center;
+        background-size: cover;
+        height: 60vh;
+        min-height: 500px;
+        display: flex;
+        align-items: center;
+        color: white;
+        margin-bottom: 40px;
+        position: relative;
+    }
+
+    .match-header-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .match-header-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .match-title {
+        font-size: 3rem;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .match-meta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+    }
+
+    .match-meta-item {
+        display: flex;
+        align-items: center;
+        margin: 0 1.5rem;
+    }
+
+    .match-meta-item i {
+        margin-right: 0.75rem;
+        color: #6366f1;
+    }
+
+    .match-teams {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+
+    .match-team {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 200px;
+    }
+
+    .match-team img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+        border: 3px solid white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .match-team-name {
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    .match-score {
+        font-size: 3.5rem;
+        font-weight: 800;
+        margin: 0 2rem;
+        color: white;
+        min-width: 120px;
+        text-align: center;
+    }
+
+    .match-report-card {
+        background-color: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        margin-top: -80px;
+        position: relative;
+        z-index: 3;
+    }
+
+    .match-stats {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .stat-circle {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 8px solid #e0e7ff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        position: relative;
+    }
+
+    .stat-circle-value {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #6366f1;
+    }
+
+    .stat-circle-label {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        color: #6b7280;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    .stat-circle-team {
+        position: absolute;
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: white;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+    }
+
+    .stat-circle-home {
+        top: 10px;
+        left: 10px;
+        background-color: #6366f1;
+    }
+
+    .stat-circle-away {
+        bottom: 10px;
+        right: 10px;
+        background-color: #ef4444;
+    }
+
+    .match-report-content {
+        line-height: 1.8;
+        font-size: 1.1rem;
+        color: #4b5563;
+    }
+
+    .match-report-content h2, 
+    .match-report-content h3 {
+        margin-top: 2.5rem;
+        margin-bottom: 1.5rem;
+        color: #1a1a2e;
+        font-weight: 700;
+    }
+
+    .match-report-content h2 {
+        font-size: 2rem;
+    }
+
+    .match-report-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .match-report-content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 2rem 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .timeline {
+        position: relative;
+        padding-left: 30px;
+        margin: 2rem 0;
+    }
+
+    .timeline::before {
+        content: '';
+        position: absolute;
+        left: 5px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background-color: #e0e7ff;
+    }
+
+    .timeline-item {
+        position: relative;
+        padding-bottom: 2rem;
+    }
+
+    .timeline-item:last-child {
+        padding-bottom: 0;
+    }
+
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -30px;
+        top: 5px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #6366f1;
+    }
+
+    .timeline-time {
+        font-weight: 600;
+        color: #6366f1;
+        margin-bottom: 0.5rem;
+    }
+
+    .timeline-event {
+        background-color: #f9f9ff;
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 3px solid #6366f1;
+    }
+
+    .timeline-event-goal {
+        border-left-color: #10b981;
+    }
+
+    .timeline-event-card {
+        border-left-color: #f59e0b;
+    }
+
+    .timeline-event-sub {
+        border-left-color: #3b82f6;
+    }
+
+    .player-of-match {
+        background-color: #f9f9ff;
+        border-radius: 10px;
+        padding: 2rem;
+        margin: 3rem 0;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .player-of-match-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 2rem;
+        border: 3px solid #6366f1;
+    }
+
+    .player-of-match-badge {
+        background-color: #6366f1;
+        color: white;
+        padding: 0.25rem 1rem;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        display: inline-block;
+    }
+
+    .player-of-match-name {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: #1a1a2e;
+    }
+
+    .player-of-match-stats {
+        color: #6b7280;
+        margin-bottom: 1rem;
+    }
+
+    .gallery {
+        margin: 3rem 0;
+    }
+
+    .gallery-item {
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .gallery-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .gallery-item-caption {
+        padding: 1rem;
+        background-color: white;
+    }
+
+    @media (max-width: 992px) {
+        .match-title {
+            font-size: 2.5rem;
+        }
+        
+        .match-score {
+            font-size: 2.5rem;
+            min-width: 90px;
+        }
+        
+        .match-team img {
+            width: 80px;
+            height: 80px;
+        }
+        
+        .match-team-name {
+            font-size: 1.25rem;
+        }
+        
+        .stat-circle {
+            width: 100px;
+            height: 100px;
+            border-width: 6px;
+        }
+        
+        .stat-circle-value {
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .match-header {
+            height: 50vh;
+        }
+        
+        .match-title {
+            font-size: 2rem;
+        }
+        
+        .match-meta {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .match-meta-item {
+            margin: 0.5rem 0;
+        }
+        
+        .match-teams {
+            flex-direction: column;
+        }
+        
+        .match-team {
+            margin: 1rem 0;
+        }
+        
+        .match-score {
+            margin: 1rem 0;
+            order: -1;
+        }
+        
+        .player-of-match {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .player-of-match-avatar {
+            margin-right: 0;
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .match-header {
+            height: 40vh;
+            min-height: 400px;
+        }
+        
+        .match-title {
+            font-size: 1.75rem;
+        }
+        
+        .match-report-card {
+            margin-top: -40px;
+        }
+        
+        .stat-circle {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+        }
+        
+        .stat-circle-value {
+            font-size: 1.25rem;
+        }
+        
+        .stat-circle-label {
+            font-size: 0.7rem;
+        }
+    }
+</style>
+
+<!-- Match Header -->
+<header class="match-header">
+    <div class="match-header-overlay"></div>
+    <div class="container match-header-content">
+        <div class="row">
+            <div class="col-lg-10 mx-auto text-center">
+                <h1 class="match-title">Stanley FC vs Rangers FC</h1>
+                
+                <div class="match-meta">
+                    <div class="match-meta-item">
+                        <i class="far fa-calendar-alt"></i>
+                        <span>Saturday, June 10, 2023</span>
+                    </div>
+                    <div class="match-meta-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Alumni Stadium</span>
+                    </div>
+                    <div class="match-meta-item">
+                        <i class="fas fa-users"></i>
+                        <span>Attendance: 1,245</span>
+                    </div>
+                </div>
+                
+                <div class="match-teams">
+                    <div class="match-team">
+                        <img src="https://i.pinimg.com/736x/8e/f5/9d/8ef59dc3c90a3abd56c87a5901709132.jpg" alt="Stanley FC">
+                        <div class="match-team-name">Stanley FC</div>
+                    </div>
+                    
+                    <div class="match-score">2 - 1</div>
+                    
+                    <div class="match-team">
+                        <img src="https://i.pinimg.com/736x/32/0c/ac/320cace72205d4b671ec6b8c01b3a69c.jpg" alt="Rangers FC">
+                        <div class="match-team-name">Rangers FC</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Match Stats -->
+<section class="py-5">
+    <div class="container">
+        <div class="match-report-card">
+            <h2 class="text-center mb-5">Match Statistics</h2>
+            
+            <div class="row">
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <div class="stat-circle">
+                            <span class="stat-circle-value">58%</span>
+                            <span class="stat-circle-label">Possession</span>
+                            <span class="stat-circle-home">STN</span>
+                            <span class="stat-circle-away">RNG</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <div class="stat-circle">
+                            <span class="stat-circle-value">6</span>
+                            <span class="stat-circle-label">Shots on Target</span>
+                            <span class="stat-circle-home">STN</span>
+                            <span class="stat-circle-away">RNG</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <div class="stat-circle">
+                            <span class="stat-circle-value">5</span>
+                            <span class="stat-circle-label">Corners</span>
+                            <span class="stat-circle-home">STN</span>
+                            <span class="stat-circle-away">RNG</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="text-center">
+                        <div class="stat-circle">
+                            <span class="stat-circle-value">12</span>
+                            <span class="stat-circle-label">Fouls</span>
+                            <span class="stat-circle-home">STN</span>
+                            <span class="stat-circle-away">RNG</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-lg-8">
+                <!-- Match Report -->
+                <article class="match-report-content">
+                    <h2>Match Report</h2>
+                    <p class="lead">Stanley FC extended their lead at the top of the BubzLeague table with a hard-fought 2-1 victory over Rangers FC in a thrilling encounter at Alumni Stadium.</p>
+                    
+                    <img src="https://i.pinimg.com/736x/8d/e9/1b/8de91bc7c69e69d068f9195bad913c9b.jpg" alt="Match action" class="img-fluid">
+                    
+                    <h3>First Half</h3>
+                    <p>The match started at a frenetic pace with both teams looking to impose their style. Stanley controlled possession early but Rangers looked dangerous on the counter. The breakthrough came in the 23rd minute when John Doe curled a beautiful free-kick into the top corner from just outside the box.</p>
+                    
+                    <h3>Second Half</h3>
+                    <p>Stanley doubled their lead in the 68th minute with a well-worked team goal. Midfielder Alex Smith played a perfectly weighted through ball to John Doe who finished clinically past the Rangers keeper. Rangers pulled one back in the 75th minute through captain Michael Johnson, setting up a tense finale.</p>
+                    
+                    <img src="https://i.pinimg.com/736x/32/0c/ac/320cace72205d4b671ec6b8c01b3a69c.jpg" alt="Rangers goal" class="img-fluid">
+                    
+                    <h3>Key Moments</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-time">23' - GOAL</div>
+                            <div class="timeline-event timeline-event-goal">
+                                <strong>Stanley FC 1-0</strong> - John Doe scores with a stunning free-kick from 25 yards out.
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">42' - YELLOW CARD</div>
+                            <div class="timeline-event timeline-event-card">
+                                <strong>Rangers FC</strong> - James Wilson booked for a late challenge on Alex Smith.
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">68' - GOAL</div>
+                            <div class="timeline-event timeline-event-goal">
+                                <strong>Stanley FC 2-0</strong> - John Doe finishes a beautiful team move with a low shot into the corner.
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">75' - GOAL</div>
+                            <div class="timeline-event timeline-event-goal">
+                                <strong>Stanley FC 2-1</strong> - Michael Johnson pulls one back for Rangers with a powerful header.
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">82' - SUBSTITUTION</div>
+                            <div class="timeline-event timeline-event-sub">
+                                <strong>Stanley FC</strong> - John Doe replaced by Robert Green to fresh legs up front.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>Final Thoughts</h3>
+                    <p>Stanley showed why they're league leaders with a composed performance, though Rangers made them work hard for the three points. The win extends Stanley's unbeaten run to five matches, while Rangers remain in fifth place.</p>
+                </article>
+                
+                <!-- Player of the Match -->
+                <div class="player-of-match">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Doe" class="player-of-match-avatar">
+                    <div>
+                        <span class="player-of-match-badge">Player of the Match</span>
+                        <h3 class="player-of-match-name">John Doe</h3>
+                        <div class="player-of-match-stats">
+                            <span>2 Goals</span> | 
+                            <span>4 Shots</span> | 
+                            <span>89% Pass Accuracy</span>
+                        </div>
+                        <p>"I'm happy with the goals but credit to the whole team for the performance. We knew Rangers would be tough but we stuck to our game plan."</p>
+                    </div>
+                </div>
+                
+                <!-- Match Gallery -->
+                <h3 class="mt-5 mb-4">Match Gallery</h3>
+                <div class="row gallery">
+                    <div class="col-md-4">
+                        <div class="gallery-item">
+                            <img src="https://i.pinimg.com/736x/8d/e9/1b/8de91bc7c69e69d068f9195bad913c9b.jpg" alt="Match action">
+                            <div class="gallery-item-caption">John Doe celebrates his first goal</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="gallery-item">
+                            <img src="https://i.pinimg.com/736x/32/0c/ac/320cace72205d4b671ec6b8c01b3a69c.jpg" alt="Match action">
+                            <div class="gallery-item-caption">Michael Johnson scores for Rangers</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="gallery-item">
+                            <img src="https://i.pinimg.com/736x/e8/f0/88/e8f088324626761c201821646b10eac1.jpg" alt="Match action">
+                            <div class="gallery-item-caption">Stanley players celebrate the win</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <!-- Lineups -->
+                <div class="performance-chart">
+                    <h3 class="mb-4">Lineups</h3>
+                    
+                    <h4 class="mt-4">Stanley FC</h4>
+                    <ul class="list-group list-group-flush mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>1. Tom Wilson (GK)</span>
+                            <span class="badge bg-primary rounded-pill">8.2</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>2. David Johnson</span>
+                            <span class="badge bg-primary rounded-pill">7.5</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>5. Mark Williams</span>
+                            <span class="badge bg-primary rounded-pill">7.8</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>6. James Rodriguez</span>
+                            <span class="badge bg-primary rounded-pill">8.0</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>8. Alex Smith</span>
+                            <span class="badge bg-primary rounded-pill">8.5</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>9. John Doe</span>
+                            <span class="badge bg-primary rounded-pill">9.2</span>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="text-muted">Substitutes: Green, Brown, Taylor</span>
+                        </li>
+                    </ul>
+                    
+                    <h4>Rangers FC</h4>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>1. Paul Robinson (GK)</span>
+                            <span class="badge bg-danger rounded-pill">6.8</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>3. James Wilson</span>
+                            <span class="badge bg-danger rounded-pill">6.5</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>5. Michael Johnson (C)</span>
+                            <span class="badge bg-danger rounded-pill">7.9</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>7. Robert Taylor</span>
+                            <span class="badge bg-danger rounded-pill">7.2</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>9. Samuel Eto'o</span>
+                            <span class="badge bg-danger rounded-pill">7.0</span>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="text-muted">Substitutes: Clark, Adams, Wright</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Match Officials -->
+                <div class="performance-chart mt-4">
+                    <h3 class="mb-4">Match Officials</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Referee: Mike Dean</li>
+                        <li class="list-group-item">Assistant Referee 1: John Smith</li>
+                        <li class="list-group-item">Assistant Referee 2: David Williams</li>
+                        <li class="list-group-item">Fourth Official: Robert Brown</li>
+                    </ul>
+                </div>
+                
+                <!-- Next Match -->
+                <div class="performance-chart mt-4">
+                    <h3 class="mb-4">Next Matches</h3>
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://i.pinimg.com/736x/8e/f5/9d/8ef59dc3c90a3abd56c87a5901709132.jpg" width="40" height="40" class="rounded-circle me-2">
+                        <div>
+                            <div>Stanley FC vs United FC</div>
+                            <small class="text-muted">June 17, 2023 | Alumni Stadium</small>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img src="https://i.pinimg.com/736x/32/0c/ac/320cace72205d4b671ec6b8c01b3a69c.jpg" width="40" height="40" class="rounded-circle me-2">
+                        <div>
+                            <div>Rangers FC vs Wolves FC</div>
+                            <small class="text-muted">June 18, 2023 | Rangers Park</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <img src="assets/images/bubzleague.png" alt="BubzLeague" height="40" class="mb-3">
+                    <p>The BubzLeague is an alumni football league bringing together former students in competitive but friendly matches.</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="mb-4">League</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="fixtures" class="text-white">Fixtures</a></li>
+                        <li class="mb-2"><a href="results" class="text-white">Results</a></li>
+                        <li class="mb-2"><a href="teams" class="text-white">Teams</a></li>
+                        <li class="mb-2"><a href="players" class="text-white">Players</a></li>
+                        <li><a href="vote.php" class="text-white">Vote</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="mb-4">About</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="about-us" class="text-white">About Us</a></li>
+                        <li class="mb-2"><a href="blog" class="text-white">Blog</a></li>
+                        <li class="mb-2"><a href="media" class="text-white">Media</a></li>
+                        <li><a href="contact" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h5 class="mb-4">Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-map-marker-alt me-2"></i> 123 Alumni Street, Football City</li>
+                        <li class="mb-3"><i class="fas fa-phone me-2"></i> (123) 456-7890</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@bubzleague.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; <?php echo date("Y");?> BubzLeague. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Designed with <i class="fas fa-heart text-danger"></i> by <a target="_blank" href="https:kevin.kesug.com">Kevin K</a> </p>
+                </div>
+            </div>
+        </div>
+    </footer>    
+    
+    <!-- Bootstrap JS -->
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/script.js"></script>

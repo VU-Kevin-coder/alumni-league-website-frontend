@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BubzLeague - Alumni Football League</title>
+    <!-- Icon -->
+     <link rel="shortcut icon" href="assets/images/bubzleague.png" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Linking Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">    
+</head>
+<body>
+      <nav>
+    <div class="navbar">
+      <i class='bx bx-menu'></i>
+      <div class="logo">
+        <a class="navbar-brand" href="index">
+          <img src="assets/images/bubzleague.png" alt="BubzLeague" height="40">
+          <span class="logo-name">BubzLeague</span>
+        </a>
+      </div>
+      <div class="nav-links">
+        <div class="sidebar-logo">
+          <span class="logo-name">BubzLeague</span>
+          <i class='bx bx-x' ></i>
+        </div>
+        <ul class="links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about-us.html">About</a></li>
+          <li>
+            <a href="#">League</a>
+            <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
+            <ul class="htmlCss-sub-menu sub-menu">
+              <li><a href="fixtures.html">Fixtures</a></li>
+              <li><a href="results.html">Results</a></li>
+              <li><a href="teams.html">Teams</a></li>
+              <li><a href="players.html">Players</a></li>
+            </ul>
+          </li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="media.html">Media</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </div>
+      <div class="search-box">
+        <i class='bx bx-search'></i>
+        <div class="input-box">
+          <input type="text" placeholder="Search...">
+        </div>
+      </div>
+    </div>
+  </nav>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .newsletter-header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .newsletter-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            margin-bottom: 2rem;
+        }
+        
+        .newsletter-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .newsletter-card .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 10px 10px 0 0 !important;
+            padding: 1.5rem;
+        }
+        
+        .benefit-item {
+            margin-bottom: 1rem;
+        }
+        
+        .benefit-icon {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+        }
+        
+        .btn-subscribe {
+            background-color: var(--accent-color);
+            border: none;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-subscribe:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+        
+        .frequency-badge {
+            background-color: #e8f4fc;
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .privacy-note {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="newsletter-header text-center">
+        <div class="container">
+            <h1 class="display-4 animate__animated animate__fadeInDown">Stay Updated</h1>
+            <p class="lead animate__animated animate__fadeIn animate__delay-1s">Subscribe to our newsletter for the latest news, updates, and exclusive content</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="row">
+            <!-- Subscription Form Column -->
+            <div class="col-lg-6 mb-5">
+                <div class="newsletter-card card animate__animated animate__fadeInLeft">
+                    <div class="card-header">
+                        <h2 class="h4 mb-0">Join Our Community</h2>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="frequency-badge animate__animated animate__fadeIn animate__delay-2s">
+                            <i class="fas fa-calendar-alt me-2"></i>Weekly Digest
+                        </div>
+                        
+                        <form id="newsletterForm" class="animate__animated animate__fadeIn animate__delay-3s">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Your Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="John Doe" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" placeholder="your@email.com" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Interests (Select at least one)</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="news" checked>
+                                    <label class="form-check-label" for="news">Latest News</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="events">
+                                    <label class="form-check-label" for="events">Upcoming Events</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="exclusive">
+                                    <label class="form-check-label" for="exclusive">Exclusive Content</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="promotions">
+                                    <label class="form-check-label" for="promotions">Special Promotions</label>
+                                </div>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-subscribe btn-lg">
+                                    <i class="fas fa-paper-plane me-2"></i>Subscribe Now
+                                </button>
+                            </div>
+                            <p class="privacy-note mt-3">
+                                We respect your privacy. Unsubscribe at any time. View our <a href="#">Privacy Policy</a>.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Benefits Column -->
+            <div class="col-lg-6 mb-5">
+                <div class="newsletter-card card animate__animated animate__fadeInRight">
+                    <div class="card-header">
+                        <h2 class="h4 mb-0">Why Subscribe?</h2>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="benefit-item d-flex animate__animated animate__fadeIn animate__delay-1s">
+                            <div class="benefit-icon">
+                                <i class="fas fa-newspaper"></i>
+                            </div>
+                            <div>
+                                <h3 class="h5">Exclusive Content</h3>
+                                <p class="mb-0">Get access to content not available to regular visitors.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item d-flex animate__animated animate__fadeIn animate__delay-2s">
+                            <div class="benefit-icon">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <div>
+                                <h3 class="h5">Stay Updated</h3>
+                                <p class="mb-0">Be the first to know about new features and announcements.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item d-flex animate__animated animate__fadeIn animate__delay-3s">
+                            <div class="benefit-icon">
+                                <i class="fas fa-gift"></i>
+                            </div>
+                            <div>
+                                <h3 class="h5">Special Offers</h3>
+                                <p class="mb-0">Receive discounts and promotions exclusively for subscribers.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item d-flex animate__animated animate__fadeIn animate__delay-4s">
+                            <div class="benefit-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div>
+                                <h3 class="h5">Community Insights</h3>
+                                <p class="mb-0">Get valuable statistics and trends about our community.</p>
+                            </div>
+                        </div>
+                        
+                        <hr class="my-4">
+                        
+                        <h3 class="h5 animate__animated animate__fadeIn animate__delay-5s">What Our Subscribers Say</h3>
+                        
+                        <div class="testimonial-card animate__animated animate__fadeIn animate__delay-5s">
+                            <p>"The newsletter always has the most relevant information. It's my go-to source for updates!"</p>
+                            <p class="testimonial-author mb-0">— Sarah K., Subscriber since 2022</p>
+                        </div>
+                        
+                        <div class="testimonial-card animate__animated animate__fadeIn animate__delay-6s">
+                            <p>"I love the exclusive content I get as a subscriber. It's definitely worth signing up!"</p>
+                            <p class="testimonial-author mb-0">— Michael T., Premium Member</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FAQ Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 animate__animated animate__fadeIn">Frequently Asked Questions</h2>
+            
+            <div class="row">
+                <div class="col-md-6 animate__animated animate__fadeInLeft">
+                    <div class="card mb-3">
+                        <div class="card-header bg-white">
+                            <h3 class="h5 mb-0">How often will I receive emails?</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>We send our main newsletter weekly, with occasional special announcements as needed. You can adjust your preferences after subscribing.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-3 animate__animated animate__fadeInLeft animate__delay-1s">
+                        <div class="card-header bg-white">
+                            <h3 class="h5 mb-0">Can I unsubscribe at any time?</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Absolutely! Every email includes an unsubscribe link at the bottom. You can also manage your subscription preferences.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 animate__animated animate__fadeInRight">
+                    <div class="card mb-3">
+                        <div class="card-header bg-white">
+                            <h3 class="h5 mb-0">What type of content will I receive?</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Our newsletters include the latest news, upcoming events, exclusive content, member spotlights, and special offers. You can customize which types of content you receive.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-3 animate__animated animate__fadeInRight animate__delay-1s">
+                        <div class="card-header bg-white">
+                            <h3 class="h5 mb-0">Is my information secure?</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Yes! We take your privacy seriously. We'll never share your information with third parties without your consent.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <footer class="py-5 text-center bg-dark text-white">
+        <div class="container">
+            <h2 class="h3 mb-4 animate__animated animate__fadeIn">Ready to join our community?</h2>
+            <p class="lead mb-4 animate__animated animate__fadeIn animate__delay-1s">Subscribe now and never miss an update!</p>
+            <a href="#newsletterForm" class="btn btn-subscribe btn-lg animate__animated animate__fadeIn animate__delay-2s">
+                <i class="fas fa-paper-plane me-2"></i>Subscribe Today
+            </a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Form submission handling
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would typically send the data to your server
+            // For demo purposes, we'll just show an alert
+            alert('Thank you for subscribing! You will receive a confirmation email shortly.');
+            
+            // Reset the form
+            this.reset();
+            
+            // Scroll to top
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+
+</body>
+</html>

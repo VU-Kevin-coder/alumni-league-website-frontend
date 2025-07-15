@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BubzLeague - Alumni Football League</title>
+    <!-- Icon -->
+     <link rel="shortcut icon" href="assets/images/bubzleague.png" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Linking Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">    
+</head>
+<body>
+      <nav>
+    <div class="navbar">
+      <i class='bx bx-menu'></i>
+      <div class="logo">
+        <a class="navbar-brand" href="index">
+          <img src="assets/images/bubzleague.png" alt="BubzLeague" height="40">
+          <span class="logo-name">BubzLeague</span>
+        </a>
+      </div>
+      <div class="nav-links">
+        <div class="sidebar-logo">
+          <span class="logo-name">BubzLeague</span>
+          <i class='bx bx-x' ></i>
+        </div>
+        <ul class="links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about-us.html">About</a></li>
+          <li>
+            <a href="#">League</a>
+            <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
+            <ul class="htmlCss-sub-menu sub-menu">
+              <li><a href="fixtures.html">Fixtures</a></li>
+              <li><a href="results.html">Results</a></li>
+              <li><a href="teams.html">Teams</a></li>
+              <li><a href="players.html">Players</a></li>
+            </ul>
+          </li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="media.html">Media</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </div>
+      <div class="search-box">
+        <i class='bx bx-search'></i>
+        <div class="input-box">
+          <input type="text" placeholder="Search...">
+        </div>
+      </div>
+    </div>
+  </nav>
+    <style>
+        /* About Page Specific Styles */
+.page-header {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/about-header.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 50vh;
+    min-height: 400px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: white;
+    margin-bottom: 40px;
+}
+
+.page-header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* About Content Sections */
+.about-image-container {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.about-image-container:hover {
+    transform: translateY(-5px);
+}
+
+.about-image-container img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease;
+}
+
+.about-image-container:hover img {
+    transform: scale(1.03);
+}
+
+/* Stats Container */
+.stats-container {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Mission Section */
+.bg-light {
+    background-color: #f9f9f9 !important;
+}
+
+/* Values Cards */
+.value-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    text-align: center;
+    padding: 20px;
+}
+
+.value-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.value-icon {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.value-card .card-title {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    color: var(--dark-color);
+}
+
+.value-card .card-text {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* Committee Cards */
+.committee-card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.committee-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.committee-card .card-img-top {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 5px solid white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.committee-card:hover .card-img-top {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.committee-card .card-title {
+    font-size: 1.1rem;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.committee-card .text-muted {
+    color: var(--primary-color) !important;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.committee-card .card-text.small {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .page-header {
+        height: 40vh;
+    }
+    .core-value-card {
+        margin: 20px;
+    }
+    .stat-number {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        height: 35vh;
+    }
+        .core-value-card {
+        margin: 20px;
+    }
+    .page-header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .page-header .lead {
+        font-size: 1.2rem;
+    }
+    
+    .about-image-container {
+        margin-top: 30px;
+    }
+    
+    .value-card {
+        margin-bottom: 20px;
+    }
+    
+    .committee-card {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-header {
+        height: 30vh;
+        min-height: 300px;
+    }
+    .core-value-card {
+        margin: 20px;
+    }
+    .page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .page-header .lead {
+        font-size: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
+    }
+    
+    .committee-card .card-img-top {
+        width: 120px;
+        height: 120px;
+    }
+}
+    </style>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-header-overlay"></div>
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12 text-center text-white">
+                    <h1 class="display-3 animate__animated animate__fadeInDown">About BubzLeague</h1>
+                    <p class="lead animate__animated animate__fadeInUp animate__delay-1s">Our Story, Mission, and Values</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Content -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <h2 class="mb-4 animate__animated animate__fadeIn">Our Story</h2>
+                    <p class="animate__animated animate__fadeIn animate__delay-1s">Founded in 2015, BubzLeague began as a small gathering of alumni friends who wanted to keep their football passion alive after graduation. What started as casual weekend matches soon grew into a structured league with multiple teams and regular seasons.</p>
+                    <p class="animate__animated animate__fadeIn animate__delay-2s">Today, BubzLeague boasts 7 competitive teams, over 100 registered players, and a growing fan base. We've hosted 8 successful seasons, with each one more exciting than the last.</p>
+                    <div class="stats-container mt-5 animate__animated animate__fadeIn animate__delay-3s">
+                        <div class="row text-center">
+                            <div class="col-4">
+                                <div class="stat-number">8</div>
+                                <div class="stat-label">Seasons</div>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-number">7</div>
+                                <div class="stat-label">Teams</div>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-number">120+</div>
+                                <div class="stat-label">Players</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-image-container animate__animated animate__fadeIn">
+                        <img src="https://i.pinimg.com/1200x/6a/93/79/6a937924f524d766be3a6d1bde50e54b.jpg" alt="BubzLeague Team" class="img-fluid rounded shadow">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 order-lg-2">
+                    <h2 class="mb-4 animate__animated animate__fadeIn">Our Mission</h2>
+                    <p class="animate__animated animate__fadeIn animate__delay-1s">At BubzLeague, our mission is to foster camaraderie, sportsmanship, and healthy competition among alumni through the beautiful game of football.</p>
+                    <p class="animate__animated animate__fadeIn animate__delay-2s">We aim to:</p>
+                    <ul class="animate__animated animate__fadeIn animate__delay-2s">
+                        <li>Provide a competitive yet friendly football environment for alumni</li>
+                        <li>Promote physical fitness and healthy lifestyles</li>
+                        <li>Maintain and strengthen alumni connections</li>
+                        <li>Develop football skills at all levels</li>
+                        <li>Give back to the community through football-related initiatives</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="about-image-container animate__animated animate__fadeIn">
+                        <img src="https://i.pinimg.com/736x/e9/cd/55/e9cd55c774407fd73ab47ea64fe07950.jpg" alt="BubzLeague Match" class="img-fluid rounded shadow">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 animate__animated animate__fadeIn">Our Core Values</h2>
+            <div class="row g-4">
+                <div class="core-value-card col-md-4 ">
+                    <div class="card value-card h-100 animate__animated animate__fadeInUp">
+                        <div class="card-body text-center">
+                            <div class="value-icon mb-3">
+                                <i class="fas fa-handshake fa-3x text-primary"></i>
+                            </div>
+                            <h4 class="card-title">Sportsmanship</h4>
+                            <p class="card-text">We prioritize fair play, respect for opponents, and graciousness in both victory and defeat.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="core-value-card col-md-4">
+                    <div class="card value-card h-100 animate__animated animate__fadeInUp animate__delay-1s">
+                        <div class="card-body text-center">
+                            <div class="value-icon mb-3">
+                                <i class="fas fa-users fa-3x text-primary"></i>
+                            </div>
+                            <h4 class="card-title">Community</h4>
+                            <p class="card-text">We believe in the power of football to bring people together and strengthen alumni bonds.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="core-value-card col-md-4">
+                    <div class="card value-card h-100 animate__animated animate__fadeInUp animate__delay-2s">
+                        <div class="card-body text-center">
+                            <div class="value-icon mb-3">
+                                <i class="fas fa-trophy fa-3x text-primary"></i>
+                            </div>
+                            <h4 class="card-title">Excellence</h4>
+                            <p class="card-text">We strive for continuous improvement in our league organization and football skills.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Committee Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 animate__animated animate__fadeIn">Meet The Committee</h2>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="card committee-card text-center animate__animated animate__fadeIn">
+                        <img src="https://i.pinimg.com/1200x/3e/1a/67/3e1a67be912c582b9455f18b26ed329c.jpg" alt="Committee Member" class="card-img-top rounded-circle mx-auto mt-3" style="width: 150px; height: 150px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">Michael Brown</h5>
+                            <p class="card-text text-muted">League Chairman</p>
+                            <p class="card-text small">Founding member and passionate about alumni football.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card committee-card text-center animate__animated animate__fadeIn animate__delay-1s">
+                        <img src="https://i.pinimg.com/736x/0e/52/f0/0e52f048249a9035e76490bf7dfd9ed2.jpg" alt="Committee Member" class="card-img-top rounded-circle mx-auto mt-3" style="width: 150px; height: 150px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">Sarah Johnson</h5>
+                            <p class="card-text text-muted">Secretary</p>
+                            <p class="card-text small">Organizes all league communications and meetings.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card committee-card text-center animate__animated animate__fadeIn animate__delay-2s">
+                        <img src="https://i.pinimg.com/1200x/0f/c6/84/0fc6843fa82aca64dd86df2d867a7ad6.jpg" alt="Committee Member" class="card-img-top rounded-circle mx-auto mt-3" style="width: 150px; height: 150px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">David Wilson</h5>
+                            <p class="card-text text-muted">Fixtures Coordinator</p>
+                            <p class="card-text small">Manages all match scheduling and referee assignments.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card committee-card text-center animate__animated animate__fadeIn animate__delay-3s">
+                        <img src="https://i.pinimg.com/736x/b4/49/5a/b4495a684d1fde515e95c04b3cc31d06.jpg" alt="Committee Member" class="card-img-top rounded-circle mx-auto mt-3" style="width: 150px; height: 150px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">Emma Davis</h5>
+                            <p class="card-text text-muted">Media & PR</p>
+                            <p class="card-text small">Handles all league communications and social media.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <img src="assets/images/bubzleague.png" alt="BubzLeague" height="40" class="mb-3">
+                    <p>The BubzLeague is an alumni football league bringing together former students in competitive but friendly matches.</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="mb-4">League</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="fixtures" class="text-white">Fixtures</a></li>
+                        <li class="mb-2"><a href="results" class="text-white">Results</a></li>
+                        <li class="mb-2"><a href="teams" class="text-white">Teams</a></li>
+                        <li class="mb-2"><a href="players" class="text-white">Players</a></li>
+                        <li><a href="vote.php" class="text-white">Vote</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="mb-4">About</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="about-us" class="text-white">About Us</a></li>
+                        <li class="mb-2"><a href="blog" class="text-white">Blog</a></li>
+                        <li class="mb-2"><a href="media" class="text-white">Media</a></li>
+                        <li><a href="contact" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h5 class="mb-4">Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-map-marker-alt me-2"></i> 123 Alumni Street, Football City</li>
+                        <li class="mb-3"><i class="fas fa-phone me-2"></i> (123) 456-7890</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@bubzleague.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; <?php echo date("Y");?> BubzLeague. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Designed with <i class="fas fa-heart text-danger"></i> by <a target="_blank" href="https:kevin.kesug.com">Kevin K</a> </p>
+                </div>
+            </div>
+        </div>
+    </footer>    
+    
+    <!-- Bootstrap JS -->
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

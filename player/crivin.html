@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stanley FC - BubzLeague</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+<style>
+    /* Player Profile Styles */
+    .player-header {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                    url('../images/player-header-bg.jpg') no-repeat center center;
+        background-size: cover;
+        height: 60vh;
+        min-height: 500px;
+        display: flex;
+        align-items: center;
+        color: white;
+        margin-bottom: 40px;
+        position: relative;
+    }
+
+    .player-header-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .player-header-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .player-name {
+        font-size: 3.5rem;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 0.5rem;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .player-position {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+        color: #6366f1;
+    }
+
+    .player-team {
+        display: inline-flex;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        margin-bottom: 2rem;
+    }
+
+    .player-team img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 1rem;
+        border: 2px solid white;
+    }
+
+    .player-team-name {
+        font-weight: 600;
+    }
+
+    .player-stats-card {
+        background-color: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        margin-top: -100px;
+        position: relative;
+        z-index: 3;
+    }
+
+    .player-avatar {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        margin: 0 auto -100px auto;
+        display: block;
+        position: relative;
+        z-index: 4;
+    }
+
+    .stat-item {
+        text-align: center;
+        padding: 1.5rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .stat-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .stat-value {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #6366f1;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #6b7280;
+        font-weight: 600;
+    }
+
+    .player-bio {
+        line-height: 1.8;
+        font-size: 1.1rem;
+        color: #4b5563;
+    }
+
+    .player-bio h3 {
+        margin-top: 2.5rem;
+        margin-bottom: 1.5rem;
+        color: #1a1a2e;
+        font-weight: 700;
+    }
+
+    .performance-chart {
+        background-color: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        height: 100%;
+    }
+
+    .match-history-card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        margin-bottom: 1.5rem;
+    }
+
+    .match-history-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .match-history-card .card-body {
+        padding: 1.5rem;
+    }
+
+    .match-teams {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+    }
+
+    .match-team {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 30%;
+    }
+
+    .match-team img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin-bottom: 0.5rem;
+        border: 2px solid white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .match-score {
+        width: 40%;
+        text-align: center;
+    }
+
+    .match-score-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #1a1a2e;
+    }
+
+    .match-date {
+        color: #6b7280;
+        font-size: 0.9rem;
+    }
+
+    .match-stats {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 1rem;
+    }
+
+    .match-stat {
+        text-align: center;
+    }
+
+    .match-stat-value {
+        font-weight: 700;
+        color: #6366f1;
+    }
+
+    .match-stat-label {
+        font-size: 0.8rem;
+        color: #6b7280;
+    }
+
+    .achievement-badge {
+        display: inline-flex;
+        align-items: center;
+        background-color: #e0e7ff;
+        color: #6366f1;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        margin-right: 0.75rem;
+        margin-bottom: 0.75rem;
+        font-weight: 600;
+    }
+
+    .achievement-badge i {
+        margin-right: 0.5rem;
+    }
+.performance-chart{
+    height: auto;
+}
+    @media (max-width: 992px) {
+        .player-name {
+            font-size: 2.5rem;
+        }
+        
+        .player-position {
+            font-size: 1.25rem;
+        }
+        
+        .player-avatar {
+            width: 150px;
+            height: 150px;
+            margin-bottom: -75px;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .player-header {
+            height: 50vh;
+        }
+        
+        .player-name {
+            font-size: 2rem;
+        }
+        
+        .player-position {
+            font-size: 1.1rem;
+        }
+        
+        .player-stats-card {
+            margin-top: -50px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .player-header {
+            height: 40vh;
+            min-height: 400px;
+        }
+        
+        .player-name {
+            font-size: 1.75rem;
+        }
+        
+        .player-team {
+            padding: 0.5rem 1rem;
+        }
+        
+        .player-team img {
+            width: 30px;
+            height: 30px;
+        }
+    }
+</style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.php">
+                <img src="../assets/images/logo.png" alt="BubzLeague" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../about.php">About</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            League
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../fixtures.php">Fixtures</a></li>
+                            <li><a class="dropdown-item" href="../results.php">Results</a></li>
+                            <li><a class="dropdown-item" href="../teams.php">Teams</a></li>
+                            <li><a class="dropdown-item" href="../players.php">Players</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="../blog.php">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../media.php">Media</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../vote.php">Vote</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../contact.php">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../login.php">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<!-- Player Header -->
+<header class="player-header">
+    <div class="player-header-overlay"></div>
+    <div class="container player-header-content">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="player-name">John Doe</h1>
+                <div class="player-position">Striker | #9</div>
+                <div class="player-team">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Stanley FC">
+                    <span class="player-team-name">Stanley FC</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Player Avatar -->
+<img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Doe" class="player-avatar">
+
+<!-- Player Stats -->
+<section class="py-5">
+    <div class="container">
+        <div class="player-stats-card">
+            <div class="row">
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-item">
+                        <div class="stat-value">8</div>
+                        <div class="stat-label">Goals</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-item">
+                        <div class="stat-value">5</div>
+                        <div class="stat-label">Assists</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-item">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Shots on Target</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-item">
+                        <div class="stat-value">87%</div>
+                        <div class="stat-label">Pass Accuracy</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-lg-8">
+                <!-- Player Bio -->
+                <article class="player-bio">
+                    <h3>About John Doe</h3>
+                    <p>John Doe is the current top scorer in the BubzLeague with 8 goals in just 5 matches. Known for his clinical finishing and exceptional positioning, John has been instrumental in Stanley FC's unbeaten run this season.</p>
+                    
+                    <p>Born in Kampala, John began his football career at the age of 12 with local academy Future Stars FC. His natural goal-scoring ability quickly became apparent, and he was signed by Stanley FC in 2018 as part of their inaugural squad.</p>
+                    
+                    <h3>Playing Style</h3>
+                    <p>A classic number 9, John excels at holding up play and bringing teammates into the game. His movement off the ball is exceptional, and he has developed a reputation for scoring crucial goals in big matches.</p>
+                    
+                    <h3>Career Highlights</h3>
+                    <ul>
+                        <li>BubzLeague Top Scorer 2022 (22 goals)</li>
+                        <li>Stanley FC Player of the Season 2022</li>
+                        <li>BubzLeague Team of the Year 2022</li>
+                        <li>Young Player of the Year 2021</li>
+                    </ul>
+                    
+                    <h3>Achievements</h3>
+                    <div>
+                        <span class="achievement-badge"><i class="fas fa-trophy"></i> Golden Boot 2022</span>
+                        <span class="achievement-badge"><i class="fas fa-medal"></i> Team of the Season</span>
+                        <span class="achievement-badge"><i class="fas fa-star"></i> Player of the Month (x3)</span>
+                        <span class="achievement-badge"><i class="fas fa-award"></i> Young Player Award</span>
+                    </div>
+                </article>
+                
+                <!-- Match History -->
+                <h3 class="mt-5 mb-4">Recent Matches</h3>
+                
+                <div class="match-history-card">
+                    <div class="card-body">
+                        <div class="match-teams">
+                            <div class="match-team">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Stanley FC">
+                                <div>Stanley FC</div>
+                            </div>
+                            <div class="match-score">
+                                <div class="match-score-value">2 - 1</div>
+                                <div class="match-date">June 10, 2023</div>
+                            </div>
+                            <div class="match-team">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rangers FC">
+                                <div>Rangers FC</div>
+                            </div>
+                        </div>
+                        <div class="match-stats">
+                            <div class="match-stat">
+                                <div class="match-stat-value">2</div>
+                                <div class="match-stat-label">Goals</div>
+                            </div>
+                            <div class="match-stat">
+                                <div class="match-stat-value">1</div>
+                                <div class="match-stat-label">Assist</div>
+                            </div>
+                            <div class="match-stat">
+                                <div class="match-stat-value">4</div>
+                                <div class="match-stat-label">Shots</div>
+                            </div>
+                            <div class="match-stat">
+                                <div class="match-stat-value">89%</div>
+                                <div class="match-stat-label">Pass Acc</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="match-history-card">
+                    <div class="card-body">
+                        <div class="match-teams">
+                            <div class="match-team">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Dragons FC">
+                                <div>Dragons FC</div>
+                            </div>
+                            <div class="match-score">
+                                <div class="match-score-value">1 - 1</div>
+                                <div class="match-date">June 3, 2023</div>
+                            </div>
+                            <div class="match-team">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Stanley FC">
+                                <div>Stanley FC</div>
+                            </div>
+                        </div>
+                        <div class="match-stats">
+                            <div class="match-stat">
+                                <div class="match-stat-value">1</div>
+                                <div class="match-stat-label">Goal</div>
+                            </div>
+                            <div class="match-stat">
+                                <div class="match-stat-value">0</div>
+                                <div class="match-stat-label">Assists</div>
+                            </div>
+                            <div class="match-stat">
+                                <div class="match-stat-value">3</div>
+                                <div class="match-stat-label">Shots</div>
+                            </div>
+                            <div class="match-stat">
+                                <div class="match-stat-value">85%</div>
+                                <div class="match-stat-label">Pass Acc</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="#" class="btn btn-outline-primary">View Full Match History</a>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <!-- Performance Chart -->
+                <div class="performance-chart">
+                    <h3 class="mb-4">Season Performance</h3>
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Performance Chart" class="img-fluid">
+                    <p class="text-muted mt-3">John's goal contributions per match this season</p>
+                </div>
+                
+                <!-- Player Facts -->
+                <div class="performance-chart mt-4">
+                    <h3 class="mb-4">Player Facts</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>Age</span>
+                            <span class="fw-bold">24</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>Height</span>
+                            <span class="fw-bold">1.82m</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>Weight</span>
+                            <span class="fw-bold">78kg</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>Nationality</span>
+                            <span class="fw-bold">Ugandan</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>Preferred Foot</span>
+                            <span class="fw-bold">Right</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>Joined Stanley FC</span>
+                            <span class="fw-bold">2018</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Social Media -->
+                <div class="performance-chart mt-4">
+                    <h3 class="mb-4">Follow John</h3>
+                    <div class="d-flex justify-content-around">
+                        <a href="#" class="btn btn-outline-primary btn-sm"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="btn btn-outline-primary btn-sm"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="btn btn-outline-primary btn-sm"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-outline-primary btn-sm"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+   <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <img src="../../assets/images/logo.png" alt="BubzLeague" height="40" class="mb-3">
+                    <p>The BubzLeague is an alumni football league bringing together former students in competitive but friendly matches.</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="mb-4">League</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="../fixtures.php" class="text-white">Fixtures</a></li>
+                        <li class="mb-2"><a href="../results.php" class="text-white">Results</a></li>
+                        <li class="mb-2"><a href="../teams.php" class="text-white">Teams</a></li>
+                        <li class="mb-2"><a href="../players.php" class="text-white">Players</a></li>
+                        <li><a href="../vote.php" class="text-white">Vote</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="mb-4">About</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="../about.php" class="text-white">About Us</a></li>
+                        <li class="mb-2"><a href="../blog.php" class="text-white">Blog</a></li>
+                        <li class="mb-2"><a href="../media.php" class="text-white">Media</a></li>
+                        <li><a href="../../contact.php" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h5 class="mb-4">Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-map-marker-alt me-2"></i> 123 Alumni Street, Football City</li>
+                        <li class="mb-3"><i class="fas fa-phone me-2"></i> (123) 456-7890</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@bubzleague.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2023 BubzLeague. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Designed with <i class="fas fa-heart text-danger"></i> for football lovers</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
