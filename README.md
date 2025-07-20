@@ -35,11 +35,14 @@ This is a responsive Bootstrap-based frontend for a demo Alumni Football League 
 ## 🚀 Getting Started
 
 1. Clone the repository:
-
+```
   git clone https://github.com/VU-Kevin-coder/alumni-league-website-frontend.git
+```
 2. Open in browser:
+``` sh
   cd alumni-league-frontend
   open index.html
+```
 No backend is required to view the static UI.
 
 ## 🧑‍💻 Author
